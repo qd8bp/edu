@@ -1,21 +1,19 @@
 ```{r data generation, echo = FALSE, results = "hide"}
 library(exams)
-deg = sample(2:7,1)
-nterm = sample(1:deg,1)
+deg = sample(4:7,1)
+nterm = sample(3:deg,1)
 coef = sample(2:12,nterm,replace=T)*sample(c(-1,1),nterm,replace=T)
 exp = sort(c(sample(0:(deg-1),nterm-1,replace=T),deg),decreasing = T)
 ncs = sum(exp>=2)
 s = ""
-for(i in 1:ncs){
-  s = paste(s,paste(coef[i],"x^",deg[i],collapse="+"),collapse="")
-}
+s = paste(coef[1:ncs],"x^",deg[1:ncs],collapse="+")
 
 ```
 
 Question
 ========
 
-Huh... 
+Huh?
 
 $`r s`$
 
