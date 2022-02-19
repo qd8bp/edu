@@ -9,6 +9,7 @@ s = ""
 for(i in 1:ncs){
   s = paste(s,paste(coef[i],"x^",deg[i],collapse="+"),collapse="")
 }
+
 ```
 
 Question
