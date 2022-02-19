@@ -1,0 +1,28 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(exams)
+deg = sample(2:7,1)
+nterm = sample(1:deg,1)
+coef = sample(2:12,nterm,replace=T)*sample(c(-1,1),nterm,replace=T)
+exp = sort(c(sample(0:(deg-1),nterm-1,replace=T),deg),decreasing = T)
+
+```
+
+Question
+========
+
+`r deg`
+
+`r exp`
+
+Solution
+========
+
+
+
+Meta-information
+============
+extype: num
+exsolution: 2
+exname: linear_ax+b=cx+d_negatives
+extol: 0
+exextra[numwidth,logical]: TRUE

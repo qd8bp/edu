@@ -1,0 +1,54 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(exams)
+## DATA GENERATION
+## ax+b=c
+a = sample(2:15,1)*sample(c(-1,1),1)
+x = sample(2:15,1)*sample(c(-1,1),1)
+b = sample(2:20,1)*sample(c(-1,1),1)
+c = sample(2:15,1)*sample(c(-1,1),1)
+d = a*x+b-c*x
+posa = a>0
+posb = b>0
+posc = c>0
+posd = d>0
+sgna = c("-","+")[posa+1]
+sgnb = c("-","+")[posb+1]
+sgnc = c("-","+")[posc+1]
+sgnd = c("-","+")[posd+1]
+adsu1 = c("Add","Subtract")[posc+1]
+prep1 = c("to","from")[posc+1]
+adsu2 = c("Add","Subtract")[posb+1]
+prep2 = c("to","from")[posb+1]
+sgnd2 = c("-","")[posd+1]
+```
+
+Question
+========
+
+Solve for $x$.
+
+$$`r a`x`r sgnb` `r abs(b)`=`r c`x`r sgnd``r abs(d)`$$
+
+Solution
+========
+
+`r adsu1` $`r abs(c)`x$ `r prep1` both sides.
+
+$$`r a-c`x `r sgnb` `r abs(b)`= `r sgnd2``r abs(d)`$$
+
+`r adsu2` $`r abs(b)`$ `r prep2` both sides.
+
+$$`r a-c`x = `r d-b`$$
+
+Divide both sides by `r a-c`.
+
+$$x = `r x` $$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: linear_ax+b=cx+d_negatives
+extol: 0
+exextra[numwidth,logical]: TRUE

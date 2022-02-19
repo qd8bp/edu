@@ -1,0 +1,33 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(exams)
+## DATA GENERATION
+## ax+b=c
+a = sample(2:15,1)
+x = sample(2:15,1)
+b = sample(2:20,1)
+c = a*x+b
+```
+
+Question
+========
+
+Solve for $x$.
+
+$$`r a`x+`r b`=`r c`$$
+
+Solution
+========
+
+Subtract `r b` from both sides.
+$$`r a`x = `r c-b` $$
+Divide both sides by `r a`.
+$$x = `r x` $$
+
+
+Meta-information
+============
+extype: num
+exsolution: `r x`
+exname: linear_two_step_integer_x
+extol: 0
+exextra[numwidth,logical]: TRUE
