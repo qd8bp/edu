@@ -1,0 +1,99 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(exams)
+## https://cerebralmastication.com/2020/07/27/using-python-sympy-in-a-python-code-chunk-in-rmarkdown/
+## In console, I ran: reticulate::conda_install("r-reticulate","sympy")
+library(reticulate)
+min = 2
+max = 7
+use_condaenv(condaenv = "r-reticulate", required=TRUE)
+deg = sample(min:max,1)
+cf = c(sample(2:9,1)*sample(c(-1,1),1),sample(c(-9:9,rep(0,deg*4)),deg,T))
+# make an R function for plotting.
+s = paste("f=function(x){",cf[1],"*x^",deg,collapse="")
+for(i in 2:length(cf)){
+  if(cf[i]<0.1){
+    s = paste(s,"-",abs(cf[i]),"*x^",deg-i+1,collapse="")
+  } else if(cf[i]>0.1) {
+    s = paste(s,"+",abs(cf[i]),"*x^",deg-i+1,collapse="")
+  }
+}
+s = paste(s,"}")
+eval(parse(text=s))
+if(deg%%2==0 & cf[1]<0){
+  sol = "1000"
+  odev = "even"
+  co1 = "negative"
+  explain = "Thus the end behavior is down-down: when $x\\to -\\infty$ then $f(x)\\to -\\infty$ and when $x\\to \\infty$ then $f(x)\\to -\\infty$."
+}
+if(deg%%2==1 & cf[1]<0){
+  sol = "0100"
+  odev = "odd"
+  co1 = "negative"
+  explain = "Thus the end behavior is up-down: when $x\\to -\\infty$ then $f(x)\\to \\infty$ and when $x\\to \\infty$ then $f(x)\\to -\\infty$."
+}
+if(deg%%2==1 & cf[1]>0){
+  sol = "0010"
+  odev = "odd"
+  co1 = "positive"
+  explain = "Thus the end behavior is down-up: when $x\\to -\\infty$ then $f(x)\\to -\\infty$ and when $x\\to \\infty$ then $f(x)\\to \\infty$."
+}
+if(deg%%2==0 & cf[1]>0){
+  sol = "0001"
+  odev = "even"
+  co1 = "positive"
+  explain = "Thus the end behavior is up-up: when $x\\to -\\infty$ then $f(x)\\to \\infty$ and when $x\\to \\infty$ then $f(x)\\to \\infty$."
+}
+```
+
+
+Question
+========
+
+Consider the polynomial function below.
+
+```{python,results="asis",echo=F}
+from sympy import symbols, Poly, latex
+x = symbols("x")
+po = Poly(list(map(int,r.cf)),x)
+st = latex(po.as_expr())
+```
+
+
+$$f(x)=`r py$st`$$
+
+Multiple choice: describe the end behavior.
+
+* Down-down: when $x\to -\infty$ then $f(x)\to -\infty$ and when $x\to \infty$ then $f(x)\to -\infty$.
+* Up-down: when $x\to -\infty$ then $f(x)\to \infty$ and when $x\to \infty$ then $f(x)\to -\infty$.
+* Down-up: when $x\to -\infty$ then $f(x)\to -\infty$ and when $x\to \infty$ then $f(x)\to \infty$.
+* Up-up: when $x\to -\infty$ then $f(x)\to \infty$ and when $x\to \infty$ then $f(x)\to \infty$.
+
+Solution
+========
+
+The degree of the polynomial is `r deg`, which is `r odev`. The highest-degree term's coefficient is `r co1`. 
+
+`r explain`
+
+
+
+```{r,echo=F,fig.height=3,fig.width=3}
+par(mar=c(0,0,0,0))
+xx = seq(-100,100,length.out=1000)
+yy = f(xx)
+ymax = max(abs(yy))
+plot(xx,f(xx),type="l",ylim=c(-ymax,ymax),axes=F,ann=F,lwd=3)
+abline(h=0,col=rgb(0,0,0,0.5))
+abline(v=0,col=rgb(0,0,0,0.5))
+arrows(xx[2],yy[2],xx[1],yy[1],lwd=3)
+arrows(xx[999],yy[999],xx[1000],yy[1000],lwd=3)
+```
+
+
+Meta-information
+============
+extype: mchoice
+exsolution: `r sol`
+exname: end_behavior
+extol: 0
+exextra[numwidth,logical]: TRUE
