@@ -57,8 +57,7 @@ sss = paste(mult,"*",sss)
 Question
 ========
 
-**Draw** the polynomial function $f(x)$ shown in factored and expanded forms. Be sure to indicate the roots, where the function is positive or negative, and end behavior.
-
+Factor the polynomial function $f(x)$ to determine the roots.
 
 ```{python,echo=F}
 from sympy import *
@@ -79,9 +78,9 @@ yma = int(yma)
 aa = latex(a)
 bb = latex(b)
 rts = real_roots(b,x)
+allrts = str(solve(b,x)).lower().replace("*","")
 ```
 
-$$f(x) = `r py$aa`$$
 
 $$f(x) = `r py$bb` $$
 
@@ -89,23 +88,23 @@ $$f(x) = `r py$bb` $$
 Solution
 ========
 
-```{r,echo=F}
-eval(parse(text=paste0("f=function(x){",py$b,"}")))
-xx = seq(-7,7,0.1)
-ym = py$yma
-plot(xx,f(xx),type="l",ylim=c(-ym,ym),lwd=4,axes=F,xlab="x",ylab="f(x)",xlim=c(-6.5,6.5))
-abline(h=0)
-abline(v=0)
-axis(1,at=c(-6,unq,6))
-points(unq,rep(0,nunq),cex=2,pch=16)
-```
-\ 
+Factor.
+
+$$f(x) = `r py$aa`$$
+
+The roots:
+
+$$x|_{f(x)=0} = `r py$allrts`$$
 
 
 Meta-information
 ============
-extype: num
-exsolution: 2
+extype: string
+exsolution: `r py$allrts`
 exname: fundamental_theorem
-extol: 0
-exextra[numwidth,logical]: TRUE
+exextra[essay,logical]: TRUE
+exextra[essay_format,character]: editor
+exextra[essay_required,logical]: FALSE
+exextra[essay_fieldlines,numeric]: 5
+exextra[essay_attachments,numeric]: 1
+exextra[essay_attachmentsrequired,logical]: FALSE

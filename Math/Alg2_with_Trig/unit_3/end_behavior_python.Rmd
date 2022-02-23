@@ -63,6 +63,8 @@ $$f(x)=`r py$st`$$
 
 Multiple choice: describe the end behavior.
 
+Answerlist
+--------
 * Down-down: when $x\to -\infty$ then $f(x)\to -\infty$ and when $x\to \infty$ then $f(x)\to -\infty$.
 * Up-down: when $x\to -\infty$ then $f(x)\to \infty$ and when $x\to \infty$ then $f(x)\to -\infty$.
 * Down-up: when $x\to -\infty$ then $f(x)\to -\infty$ and when $x\to \infty$ then $f(x)\to \infty$.
@@ -88,11 +90,12 @@ abline(v=0,col=rgb(0,0,0,0.5))
 arrows(xx[2],yy[2],xx[1],yy[1],lwd=3)
 arrows(xx[999],yy[999],xx[1000],yy[1000],lwd=3)
 ```
+\ 
 
 
 Meta-information
 ============
-extype: mchoice
+extype: schoice
 exsolution: `r sol`
 exname: end_behavior
 extol: 0

@@ -43,7 +43,7 @@ Or, in other words, based on the degree of the polynomial, what is the most numb
 Solution
 ========
 
-The [Fundamental Theorem of Algebra](https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra){target="blank"} tells us that the number of complex roots, when counting for multiplicity, is equal to the degree of the polynomial.
+The Fundamental Theorem of Algebra tells us that the number of complex roots, when counting for multiplicity, is equal to the degree of the polynomial.
 
 The degree of the polynomial is just the largest exponent.
 
