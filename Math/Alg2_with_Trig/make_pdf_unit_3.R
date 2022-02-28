@@ -1,47 +1,28 @@
-## exams ----------------------------------------------------------------------------
-
-## load package
 library("exams")
+# source("myexams2htmlB.R")
 
-## exam with a simple vector of exercises in R/Markdown (.Rmd) format
-## -> alternatively try a list of vectors of more exercises
 myexam <- c("end_behavior_python.Rmd","fundamental_theorem_of_algebra.Rmd",
             "draw_polynomial_from_factors.Rmd","find_roots.Rmd")
 
-## note that the currency exercise is in UTF-8 encoding
 
-## exams2pdf ------------------------------------------------------------------------
-## PDF output (1 file per exam)
-## -> typically used for quickly checking if an exercise can be converted to PDF
-## -> or customized via suitable templates
+exams2pdf(myexam, n = 1,
+          encoding = "UTF-8",
+          dir="output",
+          edir = "unit_3",
+          texdir = "tex_exam",
+          template = "templates/my_practice.tex")
 
-## generate the PDF version of a single exercise (shown in PDF viewer)
-## with default settings
-# exams2pdf(myexam,dir="output")
-
-## generate a single PDF exam (shown in PDF viewer)
-## with specification of a template (for an exam) %s encoding
 # exams2pdf(myexam, n = 1,
-#   encoding = "UTF-8",
-#   dir="output",
-#   edir = "unit_3",
-#   template = c("templates/exam.tex","templates/solution.tex"))
+#           encoding = "UTF-8",
+#           dir="output",
+#           edir = "unit_3",
+#           texdir = "tex_exam",
+#           template = c("templates/my_exam.tex","templates/my_solution.tex"))
 
-exams2html(myexam,
-           dir="output",
-           edir="unit_3")
+# exams2pandoc(myexam,question="",solution=F,dir="output",edir = "unit_3")
 
-## generate three PDF exams and corresponding solutions in output directory
-## (with the header used to set a custom Date and ID for the exam)
-# exams2pdf(myexam, n = 3, name = c("pdf-exam", "pdf-solution"),
-#   encoding = "UTF-8",
-#   dir = "output",
-#   edir = "unit_3",
-#   template = c("templates/exam.tex", "templates/solution.tex"),
-#   header = list(
-#     Date = "2015-01-01",
-#     ID = function(i) formatC(i, width = 5, flag = "0")
-#   ))
+# myexams2html(myexam,question=T,name="ddd",solution=F,dir="output",edir="unit_3",template="templates/complicated.html")
+# exams2html(myexam,question=T,solution='<textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>',name="exam",dir="output",edir="unit_3",seed=c(1,2,3,4))
+# exams2html(myexam,solution=T,name="sol",dir="output",edir="unit_3",seed=c(1,2,3,4))
 
 
-## ----------------------------------------------------------------------------------

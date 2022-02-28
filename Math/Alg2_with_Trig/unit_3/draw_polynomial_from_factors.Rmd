@@ -89,7 +89,9 @@ $$f(x) = `r py$bb` $$
 Solution
 ========
 
-```{r,echo=F}
+You need to consider the roots and end behavior. If a root has even multiplicity, you need to bounce the curve off the $x$-axis there.
+
+```{r,fig.width=4,fig.height=4,echo=F}
 eval(parse(text=paste0("f=function(x){",py$b,"}")))
 xx = seq(-7,7,0.1)
 ym = py$yma
@@ -99,13 +101,17 @@ abline(v=0)
 axis(1,at=c(-6,unq,6))
 points(unq,rep(0,nunq),cex=2,pch=16)
 ```
-\ 
+\
 
 
 Meta-information
 ============
-extype: num
-exsolution: 2
-exname: fundamental_theorem
-extol: 0
-exextra[numwidth,logical]: TRUE
+extype: string
+exsolution: nil
+exname: regression essay
+exextra[essay,logical]: TRUE
+exextra[essay_format,character]: editor
+exextra[essay_required,logical]: FALSE
+exextra[essay_fieldlines,numeric]: 5
+exextra[essay_attachments,numeric]: 1
+exextra[essay_attachmentsrequired,logical]: FALSE

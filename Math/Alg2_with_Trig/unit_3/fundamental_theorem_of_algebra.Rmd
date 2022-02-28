@@ -43,16 +43,11 @@ Or, in other words, based on the degree of the polynomial, what is the most numb
 Solution
 ========
 
+`r deg`
+
 The Fundamental Theorem of Algebra tells us that the number of complex roots, when counting for multiplicity, is equal to the degree of the polynomial.
 
-The degree of the polynomial is just the largest exponent.
-
-Here are the (numerically solved, approximate) roots:
-
-```{python,echo=F}
-for root in po.nroots():
-  print(str(N(root,5)).lower())
-```
+The degree of the polynomial is just the largest exponent, `r deg`.
 
 
 Meta-information

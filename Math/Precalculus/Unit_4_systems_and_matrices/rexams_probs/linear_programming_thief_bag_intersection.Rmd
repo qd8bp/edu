@@ -1,0 +1,114 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## https://cerebralmastication.com/2020/07/27/using-python-sympy-in-a-python-code-chunk-in-rmarkdown/
+## In console, I ran: reticulate::conda_install("r-reticulate","sympy")## In console, I ran: reticulate::conda_install("r-reticulate","matplotlib")
+library(reticulate)
+options(scipen = 100)
+
+while(T){
+  W = sample(seq(10,40,5),1)
+  V = sample(seq(10,60,5),1)
+  d = sample(seq(0.7,20,0.1),2) #kg/L = g/ml
+  v = signif(sample(seq(0.01,1,0.01),2),1) #L
+  w = signif(v*d,1) #kg
+  ppg = 10^runif(2,0,3)
+  p = signif(ppg*w,1)
+  x = (W/w[2]-V/v[2])/(w[1]/w[2]-v[1]/v[2])
+  y = (W/w[1]-V/v[1])/(w[2]/w[1]-v[2]/v[1])
+  Pi = p[1]*x+p[2]*y
+  xfullw = W/w[1]
+  xfullv = V/v[1]
+  yfullw = W/w[2]
+  yfullv = V/v[2]
+  xfull = min(xfullw,xfullv)
+  yfull = min(yfullw,yfullv)
+  xlim = max(xfullw,xfullv)
+  ylim = max(yfullw,yfullv)
+  Pxf = p[1]*xfull
+  Pyf = p[2]*yfull
+  Pmax = max(Pi,Pxf,Pyf)
+  if(abs(w[2]*v[1]-w[1]*v[2])>0.01 & Pi==Pmax & Pxf<Pmax & Pyf<Pmax & x>1 & y>1 & w[1]!=w[2] & v[1]!=v[2] & p[1]!=p[2]){break}
+}
+```
+
+Question
+========
+
+<!-- $$x = \frac{\frac{W}{w_2}-\frac{V}{v_2}}{\frac{w_1}{w_2}-\frac{v_1}{v_2}}$$ -->
+<!-- $$y = \frac{\frac{W}{w_1}-\frac{V}{v_1}}{\frac{w_2}{w_1}-\frac{v_2}{v_1}}$$ -->
+<!-- $$v_1x+v_2y\le V$$ -->
+<!-- $$w_1x+w_2y\le W $$ -->
+<!-- To determine intersection... -->
+<!-- $$y = -\frac{v_1}{v_2}x+\frac{V}{v_2} $$ -->
+<!-- $$y = -\frac{w_1}{w_2}x+\frac{W}{w_2} $$ -->
+<!-- $$ -\frac{c_1}{c_2}x+\frac{C}{c_2} = -\frac{d_1}{d_2}x+\frac{D}{d_2}  $$ -->
+<!-- $$x = \frac{\frac{W}{w_2}-\frac{V}{v_2}}{\frac{w_1}{w_2}-\frac{v_1}{v_2}}$$ -->
+<!-- $$y = \frac{\frac{W}{w_1}-\frac{V}{v_1}}{\frac{w_2}{w_1}-\frac{v_2}{v_1}}$$ -->
+<!-- diamond density: 3.51 g/cm -->
+<!-- diamond price/carat = 1200-68000 -->
+<!-- price/gram = 6000 - 340000 -->
+
+<!-- gold density: 19.3 g/cm3 -->
+<!-- gold price/gram: $61/g -->
+
+<!-- platinum density: 21.45 g/cm3 -->
+<!-- platinum price: $35/g -->
+
+<!-- silver density: 10.49 g/cm3 -->
+<!-- silver price: $0.78/g -->
+
+<!-- density: 0.5 g/cm - 20 g/cm -->
+<!-- price: 1 USD/g - 10,000 USD/g -->
+
+
+A thief is filling her backpack with two types of valuable substances. She can carry up to `r W` kg, and her backpack can fit up to `r V` liters. 
+
+Each bag of $X$ has a weight of `r w[1]` kg, volume of `r v[1]` L, and value of `r p[1]` thousand USD.
+
+Each bag of $Y$ has a weight of `r w[2]` kg, volume of `r v[2]` L, and value of `r p[2]` thousand USD.
+
+There is no requirement to take full bags, so the thief can opt for a fraction of a bag.
+
+How many bags of each should the thief take to maximize her profit?
+
+
+Solution
+========
+
+The thief should take `r round(x,2)` bags of $X$ and `r round(y,2)` bags of $Y$. We can use linear programming to see this.
+
+We write a weight inequality.
+$$`r w[1]`x+`r w[2]`y \le `r W`$$
+We write a volume inequality.
+$$`r v[1]`x+`r v[2]`y \le `r V`$$
+We graph the two inequalities, shading the feasible region.
+```{r,echo=F}
+xx = seq(0,xlim,0.01)
+x2 = seq(0,xfull,0.01)
+plot(xx,yfull-yfull/xlim*xx,type="l",xlim=c(0,xfull*1.2),ylim=c(0,yfull*1.2),lwd=3,ylab="bags of Y",xlab="bags of X")
+lines(x2,ylim-ylim/xfull*x2,lwd=3)
+polygon(c(0,0,x,xfull,0),c(0,yfull,y,0,0),col=rgb(0.5,0.5,0.5,0.5))
+points(c(0,x,xfull),c(yfull,y,0))
+```
+
+There are three vertices of interest.
+$$(0,`r round(yfull,2)`) $$
+$$(`r round(x,2)`,`r round(y,2)`) $$
+$$(`r round(xfull,2)`,0)$$
+
+We write a profit function (the objective function).
+$$P(x,y) = `r p[1]`x+`r p[2]`y $$
+
+We determine the profits.
+$$P(0,`r round(yfull,2)`)=`r round(p[2]*yfull,2)` $$
+$$P(`r round(x,2)`,`r round(y,2)`)=`r round(p[1]*x+p[2]*y,2)` $$
+$$P(`r round(xfull,2)`,0)=`r round(p[1]*xfull,2)` $$
+Thus, the thief should take `r round(x,2)` bags of $X$ and `r round(y,2)` bags of $Y$.
+
+<!-- Note: we could also draw isoprofit lines, seeing that an isoprofit line has a slope between the slopes of the weight and volume constraints. -->
+
+
+Meta-information
+============
+extype: string
+exsolution: nil
+exname: linear_programming_thief

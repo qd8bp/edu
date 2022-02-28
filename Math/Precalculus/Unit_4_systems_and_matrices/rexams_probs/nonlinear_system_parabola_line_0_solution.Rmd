@@ -1,0 +1,82 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## https://cerebralmastication.com/2020/07/27/using-python-sympy-in-a-python-code-chunk-in-rmarkdown/
+## In console, I ran: reticulate::conda_install("r-reticulate","sympy")## In console, I ran: reticulate::conda_install("r-reticulate","matplotlib")
+library(reticulate)
+while(T){
+  ver = sample(-10:10,2,T)
+  a = sample(1:10,1)*sample(c(-1,1),1)
+  lh1 = paste0("y-(",a,")*x**2+2*",a,"*x")
+  rh1 = a*ver[1]^2+ver[2]
+  x1 = ver[1]+sample(2:5,1,F,c(0.1,0.2,0.3,0.4))*sample(c(-1,1),1)
+  y1 = a*(x1-ver[1])^2+ver[2]
+  m = 2*a*(x1-ver[1])
+  x2 = x1+1
+  y2 = y1+m
+  if(a<0){
+    diff = sample(2:100,1)
+    y1=y1+diff
+    y2=y2+diff
+  } else {
+    diff = sample(2:100,1)
+    y1=y1-diff
+    y2=y2-diff
+  }
+  lh2 = paste0("(",x2-x1,")*y-(",y2-y1,")*x")
+  rh2 = y1*(x2-x1)-x1*(y2-y1)
+  mm = abs(y1)+5
+  if(y2!=y1 & abs(rh1)<40 & abs(rh2)<40){break}
+}
+```
+
+
+```{python,echo=F}
+import sympy as sp
+x = sp.symbols("x")
+y = sp.symbols("y")
+ex1 = sp.parse_expr(r.lh1)
+ex2 = sp.parse_expr(r.lh2)
+# eq1 = sp.Eq(ex1,int(r.b[0][0]))
+eq2 = sp.Eq(ex2,int(r.rh2))
+eq2 = sp.simplify(eq2)
+lex1 = sp.latex(ex1)
+lex2 = sp.latex(ex2)
+lat2 = str(sp.latex(eq2)).replace('=','&=')
+```
+
+Question
+========
+
+Solve the system of equations.
+
+$$\begin{align}
+`r py$lex1` &= `r rh1` \\
+`r py$lat2`
+\end{align}$$
+
+
+Solution
+========
+
+There is no solution.
+
+This system represents a parabola and a non-intersecting line.
+
+```{r,echo=F}
+xxx = max(abs(x1),abs(x2))+20
+x = seq(-xxx,xxx,0.1)
+yA = a*(x-ver[1])^2+ver[2]
+yB = (y2-y1)/(x2-x1)*(x-x1)+y1
+mm = max(abs(y1),abs(y2))+5
+plot(x,yA,type="l",ylim=c(-mm,mm),lwd=3,ylab="y")
+lines(x,yB,type="l",lwd=2)
+abline(h=0)
+abline(v=0)
+```
+
+
+
+Meta-information
+============
+extype: string
+exsolution: nil
+exname: nonlinear_system_parabola_line_0_solution

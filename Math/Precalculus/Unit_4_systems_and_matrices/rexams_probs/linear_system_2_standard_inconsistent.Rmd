@@ -1,0 +1,60 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(pracma)
+## https://cerebralmastication.com/2020/07/27/using-python-sympy-in-a-python-code-chunk-in-rmarkdown/
+## In console, I ran: reticulate::conda_install("r-reticulate","sympy")
+library(reticulate)
+
+while(T){
+a1 = sample(1:20,4)*sample(c(-1,1),4,T)
+a = matrix(a1,ncol=2,byrow=T)
+x = sample(1:10,2)*sample(c(-1,1),2,T)
+b = a%*%x
+ex1 = paste0('',a[1,1],'*x+(',a[1,2],')*y')
+ex2 = paste0('',a[2,1],'*x+(',a[2,2],')*y')
+sol = rref(cbind(a,b))
+if(sol[1,1]==0 || sol[2,2]==0){break}
+}
+diff = sample(1:40,1)*sample(c(-1,1),1)
+b = b+c(diff,-diff)
+```
+
+```{python,echo=F}
+import sympy as sp
+x = sp.symbols("x")
+y = sp.symbols("y")
+ex1 = sp.parse_expr(r.ex1)
+ex2 = sp.parse_expr(r.ex2)
+# eq1 = sp.Eq(ex1,int(r.b[0][0]))
+# eq2 = sp.Eq(ex2,int(r.b[1][0]))
+lex1 = sp.latex(ex1)
+lex2 = sp.latex(ex2)
+A = list(map(int,r.a1))
+A = sp.Matrix(2,2,A)
+B = list(map(int,r.b))
+A = A.col_insert(2,sp.Matrix(B))
+sol = A.rref()
+```
+
+Question
+========
+
+Solve the following system.
+
+$$\begin{align}
+`r py$lex1`&=`r b[1]`\\
+`r py$lex2`&=`r b[2]`
+\end{align}$$
+
+
+Solution
+========
+
+The system is inconsistent. The two equations represent two parallel lines, so no pair of $x$ and $y$ can satisfy both equations.
+
+
+Meta-information
+============
+extype: string
+exsolution: nil
+exname: linear_system_2_standard_inconsistent
+

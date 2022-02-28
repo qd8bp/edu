@@ -1,0 +1,70 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library(pracma)
+## https://cerebralmastication.com/2020/07/27/using-python-sympy-in-a-python-code-chunk-in-rmarkdown/
+## In console, I ran: reticulate::conda_install("r-reticulate","sympy")
+library(reticulate)
+
+while(T){
+a1 = sample(1:20,9,T)*sample(c(-1,1),9,T)
+a = matrix(a1,ncol=3,byrow=T)
+x = sample(1:10,3)*sample(c(-1,1),3,T)
+b = a%*%x
+ex1 = paste0('',a[1,1],'*x+(',a[1,2],')*y+(',a[1,3],')*z')
+ex2 = paste0('',a[2,1],'*x+(',a[2,2],')*y+(',a[2,3],')*z')
+ex3 = paste0('',a[3,1],'*x+(',a[3,2],')*y+(',a[3,3],')*z')
+sol = rref(cbind(a,b))
+if(sol[1,1]==1 & sol[2,2]==1 & sol[3,3]==1){break}
+}
+```
+
+```{python,echo=F}
+import sympy as sp
+x = sp.symbols("x")
+y = sp.symbols("y")
+z = sp.symbols("z")
+ex1 = sp.parse_expr(r.ex1)
+ex2 = sp.parse_expr(r.ex2)
+ex3 = sp.parse_expr(r.ex3)
+# eq1 = sp.Eq(ex1,int(r.b[0][0]))
+# eq2 = sp.Eq(ex2,int(r.b[1][0]))
+lex1 = sp.latex(ex1)
+lex2 = sp.latex(ex2)
+lex3 = sp.latex(ex3)
+A = list(map(int,r.a1))
+A = sp.Matrix(3,3,A)
+B = list(map(int,r.b))
+A = A.col_insert(3,sp.Matrix(B))
+sol = A.rref()
+```
+
+Question
+========
+
+Solve the following system.
+
+$$\begin{align}
+`r py$lex1`&=`r b[1]`\\
+`r py$lex2`&=`r b[2]`\\
+`r py$lex3`&=`r b[3]`
+\end{align}$$
+
+
+Solution
+========
+
+$$\begin{align}
+x&=`r x[1]`\\
+y&=`r x[2]`\\
+z&=`r x[3]`
+\end{align}$$
+
+
+Meta-information
+============
+extype: cloze
+exsolution: `r x[1]`|`r x[2]`|`r x[3]`
+exclozetype: num|num|num
+exname: linear_system_2_standard
+extol: 0
+exextra[numwidth,numeric]: 8
+
