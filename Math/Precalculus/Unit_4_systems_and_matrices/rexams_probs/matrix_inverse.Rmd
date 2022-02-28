@@ -9,7 +9,7 @@ from sympy import Matrix,nsimplify,latex
 from random import randint
 A = []
 for i in range(9):
-  A.append(randint(0,9))
+  A.append(randint(0,5))
 AA = Matrix(3,3,list(map(nsimplify,A)))
 latAA = latex(AA)
 BB = AA**(-1)

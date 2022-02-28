@@ -1,3 +1,5 @@
+
+```{r }
 library("exams")
 # source("myexams2htmlB.R")
 
@@ -32,5 +34,13 @@ exams2pdf(myexam, n = 1, seed=c(1,22,31,41,53,6,7,8,9,10,11),
 # myexams2html(myexam,question=T,name="ddd",solution=F,dir="output",edir="unit_3",template="templates/complicated.html")
 # exams2html(myexam,question=T,solution='<textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>',name="exam",dir="output",edir="unit_3",seed=c(1,2,3,4))
 # exams2html(myexam,solution=T,name="sol",dir="output",edir="unit_3",seed=c(1,2,3,4))
+```
 
 
+
+---
+title: make_practice.R
+author: chad
+date: '2022-02-28'
+
+---
