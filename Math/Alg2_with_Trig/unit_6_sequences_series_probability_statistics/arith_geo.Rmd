@@ -10,7 +10,7 @@ $$S_n = \frac{n(a_1+a_n)}{2} $$
 
 ## Geometric progression
 
-$$a_n = a_1(r)^d$$
+$$a_n = a_1(r)^n$$
 $$S_n = \frac{a_1(1-r^n)}{1-r} $$
 
 $$\text{if } |r|<1 \text{ then } S_\infty = \frac{a}{1-r} $$
