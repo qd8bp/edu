@@ -1,17 +1,36 @@
 
 \begin{question}
-Factor the polynomial function \(f(x)\) to determine the roots.
+A thief is filling her backpack with two types of valuable substances.
+She can carry up to 15 kg, and her backpack can fit up to 10 liters.
 
-\[f(x) = - x^{3} + x^{2} + 14 x - 24 \]
+Each bag of \(X\) has a weight of 0.6 kg, volume of 0.6 L, and value of
+100 thousand USD.
+
+Each bag of \(Y\) has a weight of 0.2 kg, volume of 0.1 L, and value of
+4 thousand USD.
+
+There is no requirement to take full bags, so the thief can opt for a
+fraction of a bag.
+
+How many bags of each should the thief take to maximize her profit?
 \end{question}
 
 \begin{solution}
-Factor.
+We write a weight inequality. \[0.6x+0.2y \le 15\] We write a volume
+inequality. \[0.6x+0.1y \le 10\] We graph the two inequalities, shading
+the feasible region.
 
-\[f(x) = - \left(x - 3\right) \left(x - 2\right) \left(x + 4\right)\]
+\includegraphics{unnamed-chunk-1-1-4.pdf}\\
 
-The roots:
+There are three vertices of interest. \[(0,75) \] \[(8.33,50) \]
+\[(16.67,0)\]
 
-\[x|_{f(x)=0} = [-4, 2, 3]\]
+We write a profit function (the objective function).
+\[P(x,y) = 100x+4y \]
+
+We determine the profits. \[P(0,75)=300 \] \[P(8.33,50)=1033.33 \]
+\[P(16.67,0)=1666.67 \]
+
+Thus the thief should take 16.67 bags of \(X\) and 0 bags of \(Y\).
 \end{solution}
 

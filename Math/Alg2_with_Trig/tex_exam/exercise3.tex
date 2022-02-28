@@ -1,18 +1,36 @@
 
 \begin{question}
-\textbf{Draw} the polynomial function \(f(x)\) shown in factored and
-expanded forms. Be sure to indicate the roots, where the function is
-positive or negative, and end behavior.
+A thief is filling her backpack with two types of valuable substances.
+She can carry up to 35 kg, and her backpack can fit up to 15 liters.
 
-\[f(x) = 3 \left(x - 4\right) \left(x - 3\right)^{2} \left(x + 2\right) \left(x + 5\right)\]
+Each bag of \(X\) has a weight of 3 kg, volume of 0.5 L, and value of 50
+thousand USD.
 
-\[f(x) = 3 x^{5} - 9 x^{4} - 81 x^{3} + 285 x^{2} + 234 x - 1080 \]
+Each bag of \(Y\) has a weight of 0.3 kg, volume of 0.4 L, and value of
+0.6 thousand USD.
+
+There is no requirement to take full bags, so the thief can opt for a
+fraction of a bag.
+
+How many bags of each should the thief take to maximize her profit?
 \end{question}
 
 \begin{solution}
-You need to consider the roots and end behavior. If a root has even
-multiplicity, you need to bounce the curve off the \(x\)-axis there.
+We write a weight inequality. \[3x+0.3y \le 35\] We write a volume
+inequality. \[0.5x+0.4y \le 15\] We graph the two inequalities, shading
+the feasible region.
 
-\includegraphics{unnamed-chunk-2-1-2.pdf}\\
+\includegraphics{unnamed-chunk-1-1-3.pdf}\\
+
+There are three vertices of interest. \[(0,37.5) \] \[(9.05,26.19) \]
+\[(11.67,0)\]
+
+We write a profit function (the objective function).
+\[P(x,y) = 50x+0.6y \]
+
+We determine the profits. \[P(0,37.5)=22.5 \] \[P(9.05,26.19)=468.1 \]
+\[P(11.67,0)=583.33 \]
+
+Thus the thief should take 11.67 bags of \(X\) and 0 bags of \(Y\).
 \end{solution}
 

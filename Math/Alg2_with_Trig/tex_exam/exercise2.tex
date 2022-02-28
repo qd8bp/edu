@@ -1,23 +1,38 @@
 
 \begin{question}
-Consider the polynomial function below.
+A thief is filling her backpack with two types of valuable substances.
+She can carry up to 35 kg, and her backpack can fit up to 10 liters.
 
-\[f(x)=- 2 x^{7} - 4 x^{5} + 8 x^{3} + 7 x - 6\]
+Each bag of \(X\) has a weight of 3 kg, volume of 0.2 L, and value of 20
+thousand USD.
 
-How many roots, including complex roots and counting multiplicity, does
-the polynomial have?
+Each bag of \(Y\) has a weight of 1 kg, volume of 0.7 L, and value of 30
+thousand USD.
 
-Or, in other words, based on the degree of the polynomial, what is the
-most number of possible real roots?
+There is no requirement to take full bags, so the thief can opt for a
+fraction of a bag.
+
+How many bags of each should the thief take to maximize her profit?
 \end{question}
 
 \begin{solution}
-7
+The thief should take 7.63 bags of \(X\) and 12.11 bags of \(Y\). We can
+use linear programming to see this.
 
-The Fundamental Theorem of Algebra tells us that the number of complex
-roots, when counting for multiplicity, is equal to the degree of the
-polynomial.
+We write a weight inequality. \[3x+1y \le 35\] We write a volume
+inequality. \[0.2x+0.7y \le 10\] We graph the two inequalities, shading
+the feasible region.
 
-The degree of the polynomial is just the largest exponent, 7.
+\includegraphics{unnamed-chunk-1-1-2.pdf}\\
+
+There are three vertices of interest. \[(0,14.29) \] \[(7.63,12.11) \]
+\[(11.67,0)\]
+
+We write a profit function (the objective function).
+\[P(x,y) = 20x+30y \]
+
+We determine the profits. \[P(0,14.29)=428.57 \]
+\[P(7.63,12.11)=515.79 \] \[P(11.67,0)=233.33 \] Thus, the thief should
+take 7.63 bags of \(X\) and 12.11 bags of \(Y\).
 \end{solution}
 

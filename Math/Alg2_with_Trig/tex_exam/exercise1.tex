@@ -1,29 +1,38 @@
 
 \begin{question}
-Consider the polynomial function below.
+A thief is filling her backpack with two types of valuable substances.
+She can carry up to 40 kg, and her backpack can fit up to 15 liters.
 
-\[f(x)=3 x^{3} + 7 x + 9\]
+Each bag of \(X\) has a weight of 2 kg, volume of 0.1 L, and value of
+1000 thousand USD.
 
-Multiple choice: describe the end behavior.
-\begin{answerlist}
-  \item Down-down: when \(x\to -\infty\) then \(f(x)\to -\infty\) and when
-\(x\to \infty\) then \(f(x)\to -\infty\).
-  \item Up-down: when \(x\to -\infty\) then \(f(x)\to \infty\) and when
-\(x\to \infty\) then \(f(x)\to -\infty\).
-  \item Down-up: when \(x\to -\infty\) then \(f(x)\to -\infty\) and when
-\(x\to \infty\) then \(f(x)\to \infty\).
-  \item Up-up: when \(x\to -\infty\) then \(f(x)\to \infty\) and when
-\(x\to \infty\) then \(f(x)\to \infty\).
-\end{answerlist}
+Each bag of \(Y\) has a weight of 0.2 kg, volume of 0.09 L, and value of
+200 thousand USD.
+
+There is no requirement to take full bags, so the thief can opt for a
+fraction of a bag.
+
+How many bags of each should the thief take to maximize her profit?
 \end{question}
 
 \begin{solution}
-The degree of the polynomial is 3, which is odd. The highest-degree
-term's coefficient is positive.
+The thief should take 3.75 bags of \(X\) and 162.5 bags of \(Y\). We can
+use linear programming to see this.
 
-Thus the end behavior is down-up: when \(x\to -\infty\) then
-\(f(x)\to -\infty\) and when \(x\to \infty\) then \(f(x)\to \infty\).
+We write a weight inequality. \[2x+0.2y \le 40\] We write a volume
+inequality. \[0.1x+0.09y \le 15\] We graph the two inequalities, shading
+the feasible region.
 
-\includegraphics{unnamed-chunk-2-1.pdf} ~
+\includegraphics{unnamed-chunk-1-1.pdf}\\
+
+There are three vertices of interest. \[(0,166.67) \] \[(3.75,162.5) \]
+\[(20,0)\]
+
+We write a profit function (the objective function).
+\[P(x,y) = 1000x+200y \]
+
+We determine the profits. \[P(0,166.67)=33333.33 \]
+\[P(3.75,162.5)=36250 \] \[P(20,0)=20000 \] Thus, the thief should take
+3.75 bags of \(X\) and 162.5 bags of \(Y\).
 \end{solution}
 
