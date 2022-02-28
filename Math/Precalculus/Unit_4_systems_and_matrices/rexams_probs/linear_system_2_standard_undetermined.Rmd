@@ -38,10 +38,10 @@ Question
 
 Solve the following system.
 
-$$\begin{align}
+$$\begin{aligned}
 `r py$lex1`&=`r b[1]`\\
 `r py$lex2`&=`r b[2]`
-\end{align}$$
+\end{aligned}$$
 
 
 Solution

@@ -1,0 +1,36 @@
+library("exams")
+# source("myexams2htmlB.R")
+
+myexam <- c("rexams_probs/linear_system_2_standard.Rmd",
+            "rexams_probs/linear_system_2_standard_inconsistent.Rmd",
+            "rexams_probs/linear_system_2_standard_undetermined.Rmd",
+            "rexams_probs/linear_system_3_standard.Rmd",
+            "rexams_probs/linear_system_3_standard_undetermined.Rmd",
+            "rexams_probs/nonlinear_system_parabola_line_2_solutions.Rmd",
+            "rexams_probs/nonlinear_system_parabola_line_1_solution.Rmd",
+            "rexams_probs/nonlinear_system_parabola_line_0_solution.Rmd",
+            "rexams_probs/linear_programming_thief_bag_intersection.Rmd",
+            "rexams_probs/matrix_multiplication.Rmd",
+            "rexams_probs/matrix_inverse.Rmd")
+
+
+exams2pdf(myexam, n = 1,
+          encoding = "UTF-8",
+          dir="output",
+          texdir = "tex_exam",
+          template = "templates/my_practice.tex")
+
+# exams2pdf(myexam, n = 1,
+#           encoding = "UTF-8",
+#           dir="output",
+#           edir = "unit_3",
+#           texdir = "tex_exam",
+#           template = c("templates/my_exam.tex","templates/my_solution.tex"))
+
+# exams2pandoc(myexam,question="",solution=F,dir="output",edir = "unit_3")
+
+# myexams2html(myexam,question=T,name="ddd",solution=F,dir="output",edir="unit_3",template="templates/complicated.html")
+# exams2html(myexam,question=T,solution='<textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>',name="exam",dir="output",edir="unit_3",seed=c(1,2,3,4))
+# exams2html(myexam,solution=T,name="sol",dir="output",edir="unit_3",seed=c(1,2,3,4))
+
+

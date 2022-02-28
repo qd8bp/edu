@@ -37,10 +37,10 @@ Question
 
 Solve the system of equations.
 
-$$\begin{align}
+$$\begin{aligned}
 `r py$lex1` &= `r rh1` \\
 `r py$lat2`
-\end{align}$$
+\end{aligned}$$
 
 
 Solution
@@ -69,9 +69,8 @@ abline(v=0)
 
 Meta-information
 ============
-extype: cloze
-exsolution: |nil|nil
-exclozetype: num|num|num
+extype: string
+exsolution: nil
 exname: linear_system_2_standard
 extol: 0
 exextra[numwidth,numeric]: 8

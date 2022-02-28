@@ -81,6 +81,7 @@ $$`r w[1]`x+`r w[2]`y \le `r W`$$
 We write a volume inequality.
 $$`r v[1]`x+`r v[2]`y \le `r V`$$
 We graph the two inequalities, shading the feasible region.
+
 ```{r,echo=F}
 xx = seq(0,xlim,0.01)
 x2 = seq(0,xfull,0.01)
@@ -89,6 +90,7 @@ lines(x2,ylim-ylim/xfull*x2,lwd=3)
 polygon(c(0,0,x,xfull,0),c(0,yfull,y,0,0),col=rgb(0.5,0.5,0.5,0.5))
 points(c(0,x,xfull),c(yfull,y,0))
 ```
+\
 
 There are three vertices of interest.
 $$(0,`r round(yfull,2)`) $$

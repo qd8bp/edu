@@ -38,26 +38,25 @@ Question
 
 Solve the following system.
 
-$$\begin{align}
+$$\begin{aligned}
 `r py$lex1`&=`r b[1]`\\
 `r py$lex2`&=`r b[2]`
-\end{align}$$
+\end{aligned}$$
 
 
 Solution
 ========
 
-$$\begin{align}
+$$\begin{aligned}
 x&=`r x[1]`\\
 y&=`r x[2]`
-\end{align}$$
+\end{aligned}$$
 
 
 Meta-information
 ============
-extype: cloze
-exsolution: `r x[1]`|`r x[2]`
-exclozetype: num|num
+extype: string
+exsolution: nil
 exname: linear_system_2_standard
 extol: 0
 exextra[numwidth,numeric]: 8

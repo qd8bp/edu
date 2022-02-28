@@ -2,74 +2,32 @@
 ## https://cerebralmastication.com/2020/07/27/using-python-sympy-in-a-python-code-chunk-in-rmarkdown/
 ## In console, I ran: reticulate::conda_install("r-reticulate","sympy")## In console, I ran: reticulate::conda_install("r-reticulate","matplotlib")
 library(reticulate)
-while(T){
-  a = sample(2:4,1)
-  b = sample(2:4,1)
-  c = sample(2:4,1)
-  n1 = sample(-9:9,a*b,T)
-  d1 = sample(1:2,a*b,T)
-  n2 = sample(-9:9,b*c,T)
-  d2 = sample(1:2,b*c,T)
-  la = n1/d1
-  lb = n2/d2
-  A = matrix(n1/d1,nrow=a,byrow=T)
-  B = matrix(n2/d2,nrow=b,byrow=T)
-  C = A%*%B
-  if(a+b+c<11 & a+b+c>6 & sum(C%%1.0==0)==a*c){break}
-}
+```
+
+```{python,echo=F}
+from sympy import Matrix,nsimplify,latex
+from random import randint
+A = []
+for i in range(9):
+  A.append(randint(0,9))
+AA = Matrix(3,3,list(map(nsimplify,A)))
+latAA = latex(AA)
+BB = AA**(-1)
+latBB = latex(BB)
 ```
 
 Question
 ========
 
-
-```{python,echo=F}
-from sympy import *
-AA = Matrix(r.a,r.b,list(map(nsimplify,r.la)))
-BB = Matrix(r.b,r.c,list(map(nsimplify,r.lb)))
-latAA = latex(AA)
-latBB = latex(BB)
-CC = AA*BB
-latCC = latex(CC)
-```
-
-
-
-Determine the product of the matrix multiplication.
-
-$$`r py$latAA` \cdot `r py$latBB`$$
-
+Find the multiplicative inverse of matrix $A$.
+$$A = `r py$latAA`$$
 
 Solution
 ========
 
 The answer:
-$$`r py$latCC`$$
+$$`r py$latBB`$$
 
-
-The work:
-
-
-```{r,results="asis",echo=F}
-ord = c("1st","2nd","3rd","4th")
-for(i in 1:a){
-  for(j in 1:c){
-    s = character(0)
-    tot = 0
-    cat(ord[i]," row and ", ord[j], "column... ")
-    cat("$")
-    for(k in 1:b){
-      s = c(s,paste0("(",A[i,k],")(",B[k,j],")"))
-      tot = tot+A[i,k]*B[k,j]
-    }
-    cat(paste0(s,collapse="+"))
-    cat(" = ")
-    cat(tot)
-    cat("$")
-    cat("\n\n")
-  }
-}
-```
 
 
 
@@ -77,4 +35,4 @@ Meta-information
 ============
 extype: string
 exsolution: nil
-exname: matrix_multiplication
+exname: matrix_inverse

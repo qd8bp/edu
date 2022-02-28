@@ -1,0 +1,36 @@
+
+\begin{question}
+A thief is filling her backpack with two types of valuable substances.
+She can carry up to 35 kg, and her backpack can fit up to 10 liters.
+
+Each bag of \(X\) has a weight of 0.06 kg, volume of 0.02 L, and value
+of 30 thousand USD.
+
+Each bag of \(Y\) has a weight of 4 kg, volume of 0.8 L, and value of
+2000 thousand USD.
+
+There is no requirement to take full bags, so the thief can opt for a
+fraction of a bag.
+
+How many bags of each should the thief take to maximize her profit?
+\end{question}
+
+\begin{solution}
+The thief should take 375 bags of \(X\) and 3.13 bags of \(Y\). We can
+use linear programming to see this.
+
+We write a weight inequality. \[0.06x+4y \le 35\] We write a volume
+inequality. \[0.02x+0.8y \le 10\] We graph the two inequalities, shading
+the feasible region. \includegraphics{unnamed-chunk-1-1.pdf}
+
+There are three vertices of interest. \[(0,8.75) \] \[(375,3.13) \]
+\[(500,0)\]
+
+We write a profit function (the objective function).
+\[P(x,y) = 30x+2000y \]
+
+We determine the profits. \[P(0,8.75)=17500 \] \[P(375,3.13)=17500 \]
+\[P(500,0)=15000 \] Thus, the thief should take 375 bags of \(X\) and
+3.13 bags of \(Y\).
+\end{solution}
+

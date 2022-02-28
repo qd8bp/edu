@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+
+%% packages
+\usepackage{color,verbatim,Sweave,url,xargs,amsmath,graphicx}
+\usepackage[left=0.5in, right=.5in, top=1in, bottom=.75in]{geometry}
+% \usepackage{times}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{arev}
+\usepackage{fancyhdr}
+
+
+\setkeys{Gin}{width=0.5\linewidth}
+
+%% new environments
+\newenvironment{question}{\item}{\vfill}
+\newenvironment{solution}{\comment}{\endcomment}
+\newenvironment{answerlist}{\renewcommand{\labelenumi}{(\alph{enumi})}\begin{samepage}\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]}{\end{enumerate}\end{samepage}}
+%%\newenvironment{answerlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\renewcommand{\labelenumi}{(\alph{enumi})}\begin{multicols}{2}\begin{enumerate}}{\end{enumerate}\end{multicols}}
+%% \newenvironment{answerlist}{\renewcommand{\labelenumi}{(\alph{enumi})}\begin{multicols}{2}\begin{enumerate}}{\end{enumerate}\end{multicols}}
+
+
+
+%% paragraphs
+\setlength{\parskip}{0.7ex plus0.1ex minus0.1ex}
+\setlength{\parindent}{0em}
+
+%% compatibility with pandoc
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% %% fonts: Helvetica
+% \renewcommand{\sfdefault}{phv}
+% \IfFileExists{sfmath.sty}{
+%   \RequirePackage{sfmath}
+%   \renewcommand{\rmdefault}{phv}
+% }{}
+
+
+
+% %% headings
+% \markboth{\textnormal{\bf \large Statistics Exam: \myID}}%
+% {\textnormal{\bf \large Statistics Exam: \myID}}
+% \pagestyle{myheadings}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Algebra \& Trig Unit 3}
+\lhead{\sc{Fusion Academy}}
+\chead{QUESTIONS}
+\rfoot{Page \thepage}
+\setlength{\headheight}{15pt}
+
+
+%% title page
+% \thispagestyle{empty}
+% {\sf
+% \textbf{\LARGE{Fusion Academy}}
+
+% \textbf{\large{Statistics Exam \myDate \hfill Exam ID \myID}}
+
+
+\vspace*{0.1cm}
+
+\begin{flushright}
+\begin{tabular}{p{14cm}}
+\textbf{\huge{Name:}} \hrule \\[1.5cm]
+\textbf{\huge{Date:}} \hrule \\[0.5cm]
+% \textbf{Signature:} \hrule  \\[1.5cm]
+\end{tabular}
+\end{flushright}
+% 
+% \vspace*{1cm}
+
+% \newpage
+
+\begin{enumerate}
+%% \exinput{exercises}
+\end{enumerate}
+
+\newpage
+
+\renewenvironment{question}{\comment}{\endcomment}
+\renewenvironment{solution}{\item}{\vfill}
+
+
+\chead{SOLUTIONS}
+
+\begin{enumerate}
+%% \exinput{exercises}
+\end{enumerate}
+
+\end{document}
