@@ -1,0 +1,51 @@
+---
+title: "Arithmetic and Geometric Series"
+output: pdf_document
+---
+
+## Arithmetic progression
+
+$$a_n = a_1+(n-1)d$$
+$$S_n = \frac{n(a_1+a_n)}{2} $$
+
+## Geometric progression
+
+$$a_n = a_1(r)^d$$
+$$S_n = \frac{a_1(1-r^n)}{1-r} $$
+
+$$\text{if } |r|<1 \text{ then } S_\infty = \frac{a}{1-r} $$
+
+## Practice
+
+1. Find the 20th term in the progression below.
+
+$$2, 5, 8, 11, \ldots $$
+
+\vfill
+
+2. Find the 9th term in the progression below.
+
+$$2, 6, 18, 54 \ldots $$
+
+\vfill
+
+\newpage
+
+3. Find the SUM of the first 10 terms of the progression below.
+
+$$2, 5, 8, 11, \ldots $$
+
+\vfill
+
+4. Find the SUM of the first 7 terms of the progression below.
+
+$$2, 6, 18, 54 \ldots $$
+
+
+\vfill
+
+5. Find the SUM of the infinite series below.
+
+$$36, 12, 4, \frac{4}{3}, \frac{4}{9} \ldots $$
+\vfill
+

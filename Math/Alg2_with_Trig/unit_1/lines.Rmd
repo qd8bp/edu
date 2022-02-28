@@ -1,0 +1,26 @@
+---
+title: "linear_systems"
+output: pdf_document
+---
+
+## Practice
+
+Graph the system and find the solution.
+
+$$\begin{aligned}
+2x+3y &= 24 \\
+3x+2y &= 26
+\end{aligned}$$
+
+```{r,fig.height=6,fig.width=6,echo=F}
+par(mar=c(0,0,0,0))
+plot(c(0,0),c(0,1),type="l",xlim=c(0,1),ylim=c(0,1),axes=F,ann=F)
+for(h in seq(0,1,0.01)){
+  lines(c(0,1),c(h,h),col=rgb(0.5,0.5,0.5),lwd=0.5)
+  lines(c(h,h),c(0,1),col=rgb(0.5,0.5,0.5),lwd=0.5)
+}
+for(h in seq(0,1,0.1)){
+  lines(c(0,1),c(h,h),lwd=2)
+  lines(c(h,h),c(0,1),lwd=2)
+}
+```
