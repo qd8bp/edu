@@ -1,5 +1,5 @@
 ---
-title: "linear systems"
+title: "linear systems v3"
 output: pdf_document
 ---
 
@@ -10,8 +10,8 @@ output: pdf_document
 Graph the system and find the solution.
 
 $$\begin{aligned}
-y &= -2x+24 \\
-y &= 3x+4
+y &= -3x+22 \\\\
+y &= \frac{1}{2}x+8
 \end{aligned}$$
 
 ```{r,fig.height=6,fig.width=6,echo=F}
